@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 class Flat(models.Model):
+    liked_by = models.ManyToManyField(User,related_name="liked_flats",blank=True,verbose_name="Кто лайкнул")
     owner = models.CharField('ФИО владельца', max_length=200)
     owners_phonenumber = models.CharField('Номер владельца', max_length=20)
     new_building = models.BooleanField(choices=[(True,"новостройка"),(False,"старое здание"),(None,"не заполнено")],blank=True,null=True)
