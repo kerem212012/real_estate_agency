@@ -1,3 +1,4 @@
-Django
-environs
-dj-database-url
+dj-database-url==2.3.0
+Django==5.1.6
+django-phonenumber-field==8.0.0
+environs==14.1.1

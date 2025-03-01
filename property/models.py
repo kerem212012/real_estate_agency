@@ -1,5 +1,5 @@
-from tkinter.constants import CASCADE
 
+from phonenumber_field.modelfields import PhoneNumberField
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 class Flat(models.Model):
     liked_by = models.ManyToManyField(User,related_name="liked_flats",blank=True,verbose_name="Кто лайкнул")
     owner = models.CharField('ФИО владельца', max_length=200)
+    owner_pure_phone = PhoneNumberField(blank=True,verbose_name="Нормализованный номер владельца")
     owners_phonenumber = models.CharField('Номер владельца', max_length=20)
     new_building = models.BooleanField(choices=[(True,"новостройка"),(False,"старое здание"),(None,"не заполнено")],blank=True,null=True)
     created_at = models.DateTimeField(
